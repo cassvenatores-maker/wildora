@@ -1,5 +1,5 @@
-﻿<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,207 +78,152 @@
         
         h2 { color: var(--primary); border-bottom: 1px solid var(--surface-hover); padding-bottom: 10px; margin-top: 50px; font-size: 2rem; }
         h3 { color: var(--accent); margin-top: 30px; font-size: 1.4rem; }
+        p { margin-bottom: 20px; font-size: 1.1rem; }
+        ul { margin-bottom: 20px; padding-left: 20px; }
+        li { margin-bottom: 10px; font-size: 1.1rem; }
         
-        .card {
-            background: var(--surface-color);
-            padding: 25px;
-            border-radius: 12px;
-            margin-top: 20px;
-            border: 1px solid var(--surface-hover);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        .alert {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 15px 20px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
         }
         
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        @media(max-width: 600px){ .grid-2 { grid-template-columns: 1fr; } }
-        
-        .token-box {
+        .footer-cta {
             text-align: center;
-            padding: 20px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid var(--primary);
-            border-radius: 12px;
+            margin-top: 80px;
+            padding: 60px 20px;
+            background: rgba(15, 23, 42, 0.9);
+            border-top: 1px solid var(--surface-hover);
         }
-        .token-box h4 { margin: 0; font-size: 2rem; color: var(--text-main); }
-        .token-box span { color: var(--primary); font-weight: bold; }
-
-        .phase-box {
-            border-left: 4px solid var(--primary);
-            padding-left: 20px;
-            margin-bottom: 30px;
-            background: rgba(30, 41, 59, 0.5);
-            padding: 20px;
-            border-radius: 0 12px 12px 0;
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 30px;
+            box-shadow: 0 10px 20px var(--primary-glow);
+            transition: all 0.3s ease;
         }
-        .phase-box h4 { color: var(--text-main); margin-top: 0; font-size: 1.2rem; }
-        
-        .highlight { color: var(--primary); font-weight: bold; }
-        .accent { color: var(--accent); font-weight: bold; }
-        
-        ul li { margin-bottom: 10px; }
-        
-        footer { text-align: center; padding: 40px; color: var(--text-muted); border-top: 1px solid var(--surface-hover); margin-top: 60px; }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px var(--primary-glow);
+        }
     </style>
 </head>
 <body>
 
     <header>
         <h1>WILDORA</h1>
-        <p class="subtitle">O Futuro Sustentável dos Jogos Play-to-Earn na Rede TON</p>
+        <p class="subtitle">The First Web3 Monster Catching RPG on Telegram.</p>
     </header>
 
     <nav>
-        <a href="#overview" class="nav-link active" onclick="showSection('overview')">1. Visão Geral & Solução</a>
-        <a href="#tokenomics" class="nav-link" onclick="showSection('tokenomics')">2. Tokenomics & Queima</a>
-        <a href="#roadmap" class="nav-link" onclick="showSection('roadmap')">3. Roadmap (Lançamento)</a>
-        <a href="#manual" class="nav-link" onclick="showSection('manual')">4. Manual do Caçador</a>
+        <a href="#overview" class="nav-link active" onclick="showSection('overview')">1. Overview & Solution</a>
+        <a href="#tokenomics" class="nav-link" onclick="showSection('tokenomics')">2. Tokenomics & Burn</a>
+        <a href="#roadmap" class="nav-link" onclick="showSection('roadmap')">3. Roadmap (Launch)</a>
+        <a href="#manual" class="nav-link" onclick="showSection('manual')">🎮 Game Manual</a>
     </nav>
 
     <div class="container">
         
-        <!-- VISÃO GERAL -->
+        <!-- OVERVIEW -->
         <div id="overview" class="section active">
             <h2>1. Executive Summary</h2>
-            <p><strong>Wildora</strong> é um ecossistema de jogos estruturado como um Mini App nativo do Telegram e impulsionado pela blockchain TON. Focado em mecânicas de exploração passiva (idle), fusão estratégica de ativos (merge) e batalhas táticas (turn-based), o projeto soluciona o maior desafio da indústria Web3: a hiperinflação de economia e a extração predatória por fazendas de bots.</p>
-            <p>Através de um modelo <strong>Web 2.5</strong>, Wildora oferece acessibilidade imediata para jogadores casuais, ao mesmo tempo em que protege sua economia real com rigorosos gargalos de tempo e a exigência de uma <strong>Licença de Caçador</strong> para participação financeira.</p>
-            
+            <p>Wildora is an "Idle to Earn" and collection RPG focused on an immersive experience on Telegram. The player accumulates energy over time, which is converted into distance traveled in-game. The further the player travels, the rarer and more valuable the chests, monsters, and rewards become.</p>
+            <p>The absolute differentiator of Wildora is the elimination of boredom: the player progresses while living their life, returning to the app only to make strategic decisions (open chests, hatch eggs, merge monsters, and invest in the TON network).</p>
+
             <h2>2. The Economic Solution</h2>
-            <p>O colapso da maioria dos jogos P2E ocorre pela falta de mecanismos de retenção de valor e pela facilidade de automação por bots. Wildora resolve isso em três frentes:</p>
-            
-            <div class="card">
-                <ul>
-                    <li><span class="accent">Integração Web 2.5 (Frictionless Onboarding):</span> Sem necessidade de carteiras complexas ou compra de NFTs iniciais. O jogador explora e coleta gratuitamente dentro do Telegram.</li>
-                    <li><span class="accent">Licença de Caçador (Sistema Anti-Bot):</span> Para converter o progresso gratuito em ganhos financeiros reais (sacar a moeda WILA e negociar NFTs), o jogador deve adquirir uma validação de US$ 10. Isso torna operações automatizadas de bots financeiramente inviáveis e financia o servidor do jogo.</li>
-                    <li><span class="accent">Ativos Deflacionários:</span> A economia exige a destruição constante de criaturas de baixo nível para forjar ativos raros, garantindo que o "chão de fábrica" nunca perca seu valor de mercado.</li>
-                </ul>
-            </div>
+            <p>Web3 games often suffer from token hyperinflation due to the ease of generating coins without a corresponding burning mechanism (sinks). Wildora solves this with a closed ecosystem highly incentivized for reinvestment:</p>
+            <ul>
+                <li><strong>Monsters as NFTs (Future):</strong> Monsters have in-game value (generate multipliers) and speculative value.</li>
+                <li><strong>Real spending in TON:</strong> Permanent upgrades (like expanding the radar or speeding up incubators) require direct payment in TON or USDT, generating real revenue for the project's Liquidity Pool.</li>
+            </ul>
         </div>
 
         <!-- TOKENOMICS -->
         <div id="tokenomics" class="section">
             <h2>3. Tokenomics: The WILA Token</h2>
-            <p><strong>WILA</strong> é o token utilitário central do ecossistema, operando na rede TON para garantir liquidez instantânea e taxas de transação centavadas.</p>
-
-            <div class="grid-2" style="margin-bottom: 30px;">
-                <div class="token-box">
-                    <span>Fornecimento Total (Supply)</span>
-                    <h4>10.000.000.000</h4>
-                    <p>10 Bilhões de WILA</p>
-                </div>
-                <div class="token-box" style="border-color: var(--accent);">
-                    <span style="color: var(--accent);">Injeção de Liquidez Exclusiva</span>
-                    <h4>40% do Faturamento</h4>
-                    <p>Fase 1 destina 40% das vendas para a Pool</p>
-                </div>
-            </div>
-
-            <p><strong>A Promessa dos 40%:</strong> Diferente de outros jogos que criam tokens do nada, Wildora se compromete a usar <strong>40% de todo o capital arrecadado na Fase 1</strong> (compras de veículos, expansões de incubadora e itens) para parear o token WILA na Liquidity Pool do lançamento. Isso garante que o token já nasça com um <em>Price Floor</em> (valor de piso) forte e real.</p>
-
-            <div class="card">
-                <h3>Distribution</h3>
-                <ul>
-                    <li><span class="highlight">50% - Recompensas do Jogo:</span> Distribuição estruturada para PvP e torneios ao longo de anos.</li>
-                    <li><span class="highlight">20% - Tesouro Comunitário:</span> Fundo de ecossistema para marketing, premiações globais e rendimentos de staking de liquidez.</li>
-                    <li><span class="highlight">15% - Pool de Liquidez (DEX):</span> Pareamento inicial robusto em corretoras descentralizadas.</li>
-                    <li><span class="highlight">15% - Equipe de Desenvolvimento:</span> Bloqueados rigorosamente via Smart Contract Vesting programado para liberação gradual ao longo de anos.</li>
-                </ul>
-            </div>
+            <p>$WILA (Wildora Token) will be launched on the TON network and will be the center of the game's high-level economy.</p>
+            
+            <h3>Distribution</h3>
+            <ul>
+                <li><strong>Liquidity Pool (LP):</strong> 40% (Funded directly by in-game upgrades sold in TON)</li>
+                <li><strong>Play-to-Earn Rewards:</strong> 30% (Distributed in Events and Leagues)</li>
+                <li><strong>Team & Development:</strong> 15% (Locked for 1 year - Cliff)</li>
+                <li><strong>Marketing & Partnerships:</strong> 15%</li>
+            </ul>
 
             <h2>4. Burn Architecture (Sinks) and Sustainability</h2>
-            <p>Como garantimos que os ativos não sofram hiperinflação?</p>
-            <div class="card" style="border-color: var(--primary);">
-                <ul>
-                    <li><strong>Desgaste de Veículos:</strong> Aceleradores multiplicam a exploração, mas possuem Stamina limitada (2 a 4 horas diárias), impedindo o monopólio de mineração por superinvestidores (Whales).</li>
-                    <li><strong>Expansão de Incubadora:</strong> O dreno primário de capital fixo. Custos de slots escalonam de US$ 5 até US$ 500.</li>
-                    <li><strong>Triturador de Ovos:</strong> Ovos excessivos geram comida de baixo valor, retirando ovos do mercado.</li>
-                    <li><strong>Fusão Exponencial:</strong> A evolução exige o sacrifício de MÚLTIPLAS criaturas idênticas do mercado. Exige monstro base no Nível 10 e consome um imposto de 1.000 a 5.000 comidas extras. O resultado da fusão não é um monstro pronto, mas sim um ovo que precisará ser chocado.</li>
-                    <li><strong>Fundo e Queima (Taxas de Torneio):</strong> As taxas arrecadadas com torneios e a Licença de Caçador são divididas rigidamente: <strong>50% do valor é permanentemente Queimado (Burned)</strong> reduzindo o supply, e <strong>50% é enviado para o Fundo de Recompensa</strong> para financiar a premiação das próximas batalhas.</li>
-                </ul>
-            </div>
+            <p>The health of a Web3 game lies in its ability to make the player spend the currency. Implemented mechanisms:</p>
+            <ul>
+                <li><strong>Merge Roulette:</strong> Merging 5 common monsters has a 20% failure rate, destroying all of them. This acts as a deflationary sink for NFTs/Tokens.</li>
+                <li><strong>Short-Term Consumables:</strong> Items like "Radar Boost" cost real money or tokens, last a short time, and create an addictive loop of constant spending to stay ahead in Leagues.</li>
+            </ul>
         </div>
 
         <!-- ROADMAP -->
         <div id="roadmap" class="section">
             <h2>5. Release Phases (Roadmap)</h2>
-            <p>A implementação em estágios garante a validação da economia antes de expor o ecossistema à volatilidade do mercado aberto.</p>
-
-            <div class="phase-box">
-                <h4>Fase 1: Exploração e Geração Zero</h4>
-                <p>Foco no Core Loop passivo. Os jogadores utilizam o radar, coletam baús, gerenciam a incubadora e realizam as primeiras evoluções. A loja comercializa microtransações em moeda forte (USDT/Fiduciária) para capitalizar o desenvolvimento.</p>
-            </div>
-
-            <div class="phase-box" style="border-left-color: #facc15;">
-                <h4 style="color: #facc15;">Evento Especial pré-Fase 2: A Desvinculação de Grupo (NFT Prep)</h4>
-                <p>Aproximadamente um mês antes das Batalhas, o sistema atual de agrupar todos os monstros idênticos será alterado. O jogador poderá <strong>dividir sua coleção em cópias individuais</strong> e evoluí-las separadamente usando sua comida guardada. Por exemplo: se você tinha uma colônia inteira agrupada, agora ela aparecerá como "3 Blobs Lvl 2, 6 Blobs Lvl 8, 5 Blobs Lvl 1". Isso é o que permite a mecânica de NFT, possibilitando que o jogador venda, por exemplo, 1 Blob Lvl 2 para o jogador X, e outro Blob Lvl 8 para o jogador Y.</p>
-            </div>
-
-            <div class="phase-box" style="border-left-color: var(--accent);">
-                <h4 style="color: var(--accent);">Fase 2: A Era do Combate e Economia Aberta</h4>
-                <p>Introdução de batalhas táticas PvE e PvP. Lançamento oficial do token WILA e abertura do Marketplace (NFTs "mintados"). Liberação da Licença de Caçador para destravar saques.</p>
-            </div>
-
-            <div class="phase-box">
-                <h4>Fase 3: Competitividade Absoluta</h4>
-                <p>Implementação de Torneios Globais com buy-in, recompensas em <strong>Ovos Lendários</strong> exclusivos do modo competitivo, e o sistema de Liquidity Pool Farming.</p>
-            </div>
+            <ul>
+                <li><strong>Phase 1: Alpha Test (Current).</strong> Telegram bot launch. Offline idle tracking, chests, eggs, inventory, and functional incubators.</li>
+                <li><strong>Phase 2: Economy Activated.</strong> Official TON Wallet integration. Purchase of consumables and acceleration ovens using real cryptocurrency.</li>
+                <li><strong>Phase 3: TGE (Token Generation Event).</strong> Creation of the $WILA Token, conversion of in-game metrics into an Airdrop, and Ranked Leagues creation.</li>
+            </ul>
         </div>
 
-        <!-- WIKI -->
+        <!-- MANUAL -->
         <div id="manual" class="section">
             <h2>HUNTER'S MANUAL: OFFICIAL SURVIVAL GUIDE</h2>
-            <p>Bem-vindo a Wildora. Aqui você aprenderá a matemática exata das taxas de queda, custos de evolução e os segredos para dominar a Fase 1.</p>
             
             <h3>1. The Radar and the Backpack Rule</h3>
-            <p>Ao escolher seu Bioma, seu radar explorará a região <strong>1.000m² por hora</strong>, funcionando de forma 100% automática, mesmo offline.</p>
-            <div class="card" style="border-color: #facc15;">
-                <p><strong>O Perigo da Mochila:</strong> Sua capacidade máxima de armazenamento é de <strong>4.500m² (cerca de 4,5 horas de radar a pé)</strong>. Se você não abrir o aplicativo para recolher os espólios, o radar trava. Organize seus retornos ao jogo para nunca perder tempo útil.</p>
+            <p>The core of the game. While you live your life, the Radar collects distance over time. Every 1,000m, you earn 1 reward chest.</p>
+            <div class="alert">
+                <strong>Attention:</strong> The Radar is a "backpack" with a maximum limit (e.g., 4500m at level 1). If the limit is reached, you stop generating chests. Enter the game and press "Claim" to empty the radar and continue earning.
             </div>
 
             <h3>2. Chest Mathematics</h3>
-            <p>Você não encontra baús a cada distância exata. O radar detecta Baús de forma aleatória entre <strong>3.800m² e 4.200m²</strong> mapeados. A sorte é lançada imediatamente após a abertura:</p>
+            <p>Opened a chest? The gods of luck roll the dice:</p>
             <ul>
-                <li><span class="accent">55% de chance de Comida:</span> Rende em média 20 porções alimentares vitais para a evolução.</li>
-                <li><span class="accent">45% de chance de Ovo:</span> Quando a sorte sorri, a raridade da criatura é definida por: Comum (35%), Raro (8%), ou Épico (2%). <em>(Monstros Lendários não estão em baús normais do mapa; prepare-se para os futuros Torneios).</em></li>
+                <li><strong>40% chance</strong> of finding <b>Food</b> (Essential in-game currency to level up).</li>
+                <li><strong>60% chance</strong> of finding a <b>Mysterious Egg</b>.</li>
             </ul>
 
             <h3>3. The Incubator and the "Egg Crusher"</h3>
-            <p>Todo ovo exige tempo de chocadeira (Comum: 6h | Raro: 12h | Épico: 48h). Você inicia sua jornada com apenas 1 slot livre. <strong>A Regra dos 30 Dias:</strong> Ovos que ficam na mochila estragam após 30 dias.</p>
-            <div class="card">
-                <p><strong>O Triturador (Dica de Mestre):</strong> Tem muito ovo repetido e a incubadora está lotada? Envie o ovo cru para o Triturador! Ele é instantaneamente convertido em dezenas de comidas, salvando seu inventário e acelerando o nivelamento de outras criaturas.</p>
-                <p><strong>A Oferta Irrecusável:</strong> Expandir a incubadora diretamente custa caro. Atenção à loja de Veículos: O Veículo Premium custa US$ 4.99 e, além de multiplicar a velocidade do seu radar, te dá o Slot 2 e um acelerador de tempo de brinde na primeira compra. A matemática é óbvia.</p>
+            <p>You only have ONE incubator by default. Eggs take a long time to hatch (Common eggs take hours, Epics can take days).</p>
+            <div class="alert">
+                If your egg inventory fills up, new chests will lose the eggs (they are discarded). The solution? Buy an Acceleration Oven in the Shop (with real money/TON) and decrease hatching time by 15x!
             </div>
 
             <h3>4. The Path to Level 10</h3>
-            <p>Suas criaturas nascem frágeis. Para prepará-las para a Fusão ou Combate, você precisará alimentá-las com a comida específica do seu bioma.</p>
-            <ul>
-                <li><strong>A Curva Exponencial:</strong> O custo de comida aumenta severamente (1.4x a cada nível).</li>
-                <li><span class="highlight">O Custo Real:</span> Levar um monstro Comum do Nível 1 ao Nível 10 custará exatamente <strong>488 porções de comida</strong>. Guarde seus recursos com sabedoria e não upe monstros aleatórios.</li>
-            </ul>
+            <p>Monsters are born weak (Level 1). You must feed them (Spending Food). Each level they gain drastically increases your <b>Mining Power</b> for the future Airdrop.</p>
+            <p>The current maximum level is 10. You have to decide: Focus all your food on your favorite Epic monster, or level up several common ones for "Merging"?</p>
 
             <h3>5. The Art of Merging</h3>
-            <p>Quer forjar uma raridade superior? A engenharia genética exige disciplina, sacrifício em massa e consumirá comida extra:</p>
-            <div class="card" style="border-color: var(--primary);">
-                <ul>
-                    <li><strong>A Matemática do Sacrifício:</strong> Para forjar a evolução, você precisa ter <strong>20 cópias</strong> (se for Comum) ou <strong>10 cópias</strong> (se for Raro). Obrigatoriamente, 1 dessas cópias precisa ser a Base no <strong>Nível 10</strong>, e as outras 9 cópias serão sacrificadas no Nível 1.</li>
-                    <li><strong>Comum para Raro:</strong> Funda 1 Comum Lvl 10 + 19 Comuns Lvl 1 + <strong>Taxa de 1.000 comidas.</strong></li>
-                    <li><strong>Raro para Épico:</strong> Funda 1 Raro Lvl 10 + 9 Raros Lvl 1 + <strong>Taxa de 5.000 comidas.</strong></li>
-                    <li><strong>O Retorno ao Ovo:</strong> O resultado da fornalha não é um monstro adulto instantâneo! A fusão expele um <strong>Ovo da nova raridade</strong>, que deverá ser colocado na incubadora e chocado normalmente.</li>
-                </ul>
-            </div>
+            <p>Duplicate monsters aren't trash, they are your greatest weapon. When you gather <b>5 identical monsters</b> that are at the <b>maximum level (10)</b>, you can use the <i>Fusion Chamber</i>.</p>
+            <p>Fusion transforms 5 "Common" monsters into 1 "Rare" from the same biome. But beware: Fusion has a failure rate to burn inflation. Be strategic.</p>
         </div>
+
     </div>
 
-    <footer>
-        <p>&copy; 2026 Wildora Web3 Game. O Futuro Sustentável dos Jogos Play-to-Earn na Rede TON.</p>
-    </footer>
+    <div class="footer-cta">
+        <h2 style="border:none; margin-top:0;">Ready to start your journey?</h2>
+        <a href="https://t.me/WildoraBot" class="btn" target="_blank">PLAY ON TELEGRAM</a>
+    </div>
 
     <script>
         function showSection(id) {
-            document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             
-            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
-            document.querySelector('.nav-link[href="#' + id + '"]').classList.add('active');
-            window.scrollTo(0,0);
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
