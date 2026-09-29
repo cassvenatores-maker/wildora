@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wildora - Jogo Web3 de Captura de Monstros no Telegram</title>
+    <meta name="description" content="Capture monstros, domine biomas e fature na economia Web3 no Wildora. Jogue agora mesmo no Telegram!">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --primary: #10b981;
+            --primary-glow: rgba(16, 185, 129, 0.4);
+            --text-main: #f8fafc;
+            --epic-glow: rgba(168, 85, 247, 0.6);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 20px var(--primary-glow); }
+            50% { box-shadow: 0 0 40px var(--primary-glow), 0 0 20px var(--primary); }
+            100% { box-shadow: 0 0 20px var(--primary-glow); }
+        }
+
+        /* Hero Section */
+        .hero { 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            background: radial-gradient(circle at top, #1e293b 0%, var(--bg-color) 80%); 
+            padding: 80px 20px; 
+            position: relative; 
+        }
+        .hero::before { 
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
+            background: url('bg-whitepaper.jpg') center/cover; opacity: 0.1; z-index: 0; 
+        }
+        
+        .content { position: relative; z-index: 1; max-width: 1000px; width: 100%; }
+        
+        .badge {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border: 1px solid var(--primary-glow);
+            display: inline-block;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .logo { 
+            font-size: 5.5rem; 
+            font-weight: 900; 
+            letter-spacing: 5px; 
+            margin-bottom: 20px; 
+            background: linear-gradient(135deg, #34d399 0%, #059669 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            text-shadow: 0 10px 40px var(--primary-glow); 
+        }
+        
+        .subtitle { 
+            font-size: 1.4rem; 
+            line-height: 1.6; 
+            color: #cbd5e1; 
+            margin-bottom: 50px; 
+            font-weight: 300; 
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 80px; }
+        .btn { padding: 18px 45px; border-radius: 30px; font-size: 1.2rem; font-weight: bold; text-decoration: none; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; border: none; }
+        .btn-play { background: var(--primary); color: #fff; animation: pulseGlow 3s infinite; }
+        .btn-play:hover { transform: translateY(-5px); filter: brightness(1.1); }
+        .btn-docs { background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
+        .btn-docs:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-5px); }
+        
+        /* Showcase Section */
+        .showcase-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .monsters-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+        }
+
+        .monster-card {
+            background: rgba(30, 41, 59, 0.6);
+            border-radius: 24px;
+            padding: 20px;
+            width: 280px;
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .monster-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2);
+        }
+        
+        .monster-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 100px;
+            background: linear-gradient(180deg, var(--epic-glow) 0%, transparent 100%);
+            opacity: 0.2;
+        }
+
+        .monster-img-wrapper {
+            width: 100%;
+            height: 240px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            border: 2px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .monster-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: float 6s ease-in-out infinite;
+        }
+        .monster-card:nth-child(2) .monster-img { animation-delay: 1s; }
+        .monster-card:nth-child(3) .monster-img { animation-delay: 2s; }
+
+        .monster-info h3 { font-size: 1.4rem; margin-bottom: 5px; color: #fff; }
+        .monster-info p { color: #a855f7; font-weight: bold; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Features Section */
+        .features { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
+        .feature-card { background: rgba(30, 41, 59, 0.4); padding: 40px 30px; border-radius: 24px; width: 320px; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        .feature-icon { font-size: 3rem; margin-bottom: 20px; display: inline-block; }
+        .feature-card h3 { font-size: 1.3rem; color: #fff; margin-bottom: 15px; }
+        .feature-card p { color: #94a3b8; font-size: 1rem; line-height: 1.6; }
+
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="content">
+            <span class="badge">A Revolução Idle-RPG no Telegram</span>
+            <h1 class="logo">WILDORA</h1>
+            <p class="subtitle">Desligue a tela. Viva sua vida. Colete recompensas. O primeiro jogo Web3 que enche seu radar enquanto você está offline. Descubra biomas, choque ovos e crie seu império.</p>
+            
+            <div class="btn-group">
+                <a href="https://t.me/WildoraBot" target="_blank" class="btn btn-play">🎮 JOGAR AGORA</a>
+                <a href="./whitepaper.html" class="btn btn-docs">📄 LER WHITEPAPER</a>
+            </div>
+            
+            <h2 class="showcase-title">Colecione Monstros Épicos</h2>
+            <div class="monsters-grid">
+                <!-- Monster 1 -->
+                <div class="monster-card">
+                    <div class="monster-img-wrapper">
+                        <img src="assets/monsters/forest_e1.jpg" alt="Monstro da Floresta" class="monster-img">
+                    </div>
+                    <div class="monster-info">
+                        <h3>Mossdrake</h3>
+                        <p>✧ Épico • Floresta</p>
+                    </div>
+                </div>
+                
+                <!-- Monster 2 -->
+                <div class="monster-card">
+                    <div class="monster-img-wrapper">
+                        <img src="assets/monsters/ocean_e1.jpg" alt="Monstro do Oceano" class="monster-img">
+                    </div>
+                    <div class="monster-info">
+                        <h3>Leviathan</h3>
+                        <p>✧ Épico • Oceano</p>
+                    </div>
+                </div>
+
+                <!-- Monster 3 -->
+                <div class="monster-card">
+                    <div class="monster-img-wrapper">
+                        <img src="assets/monsters/volcano_e1.jpg" alt="Monstro do Vulcão" class="monster-img">
+                    </div>
+                    <div class="monster-info">
+                        <h3>Elderdrake</h3>
+                        <p>✧ Épico • Vulcão</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <span class="feature-icon">⏳</span>
+                    <h3>Idle to Earn</h3>
+                    <p>O radar capta energia 24h por dia. Não precisa ficar com o jogo aberto. Apenas volte para abrir seus baús.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🥚</span>
+                    <h3>Incubadoras de Ovos</h3>
+                    <p>Encontre ovos escondidos e choque-os para expandir sua Pokédex com raridades exclusivas.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">💎</span>
+                    <h3>Economia Web3</h3>
+                    <p>Integrado à rede TON. Melhore seus veículos off-road e alcance distâncias incríveis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
